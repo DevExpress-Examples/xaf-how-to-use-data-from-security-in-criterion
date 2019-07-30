@@ -7,7 +7,7 @@
 <!-- default file list end -->
 # How to: Create a Custom Function Criteria Operator
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/e3945)**
+**[[Run Online]](https://codecentral.devexpress.com/e3945/)**
 <!-- run online end -->
 
 
