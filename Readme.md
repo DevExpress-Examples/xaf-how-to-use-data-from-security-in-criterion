@@ -11,10 +11,9 @@
 * [Module.cs](./CS/CustomFunctionCriteriaOperator.Module/Module.cs) (VB: [Module.vb](./VB/CustomFunctionCriteriaOperator.Module/Module.vb))
 <!-- default file list end -->
 # How to: Create a Custom Function Criteria Operator
-<!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/e3945/)**
-<!-- run online end -->
 
+
+![image](https://github.com/DevExpress-Examples/XAF_how-to-create-a-custom-function-criteria-operator-e3945/assets/14300209/979f25d7-23d3-4f60-a30f-18e61f8e0d7b)
 
 <p>This example shows how to create a custom Function Criteria Operator you can use anywhere it is required - in List View filters, Validation and Appearance rules, object-level security permissions, etc. </p>
 
