@@ -9,6 +9,8 @@ using DevExpress.Persistent.BaseImpl;
 using DevExpress.XtraEditors;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using DevExpress.ExpressApp.Design;
+using CustomOperator.Module.BusinessObjects;
+using DevExpress.Data.Filtering;
 
 namespace CustomOperator.Win;
 
@@ -48,6 +50,14 @@ public class ApplicationBuilder : IDesignTimeApplicationFactory {
                    // and used until the current user logs out. 
                    // See the following article for more details: https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.Security.SecurityStrategy.PermissionsReloadMode.
                    ((SecurityStrategy)securityStrategy).PermissionsReloadMode = PermissionsReloadMode.NoCache;
+                };
+                options.Events.OnCustomizeSecurityCriteriaOperator = context => {
+                    if (context.Operator is FunctionOperator functionOperator) {
+                        if (functionOperator.Operands.Count == 1 &&
+                          "CurrentCompanyOid".Equals((functionOperator.Operands[0] as ConstantValue)?.Value?.ToString(), StringComparison.InvariantCultureIgnoreCase)) {
+                            context.Result = new ConstantValue(((ApplicationUser)context.Security.User)?.Company?.Oid ?? Guid.NewGuid());
+                        }
+                    }
                 };
             })
             .UsePasswordAuthentication();

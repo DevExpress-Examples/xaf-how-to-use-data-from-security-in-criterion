@@ -13,6 +13,9 @@ using CustomOperator.WebApi.JWT;
 using DevExpress.ExpressApp.Security.Authentication.ClientServer;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.ApplicationBuilder;
+using CustomOperator.Module.BusinessObjects;
+using DevExpress.Data.Filtering;
+using CustomFunctionCriteriaOperator.Module.BusinessObjects;
 
 namespace CustomOperator.WebApi;
 
@@ -33,7 +36,10 @@ public class Startup {
 
             builder.ConfigureOptions(options => {
                 // Make your business objects available in the Web API and generate the GET, POST, PUT, and DELETE HTTP methods for it.
-                // options.BusinessObject<YourBusinessObject>();
+                 options.BusinessObject<ApplicationUser>();
+                 options.BusinessObject<Company>();
+                 options.BusinessObject<ValidatedObject>();
+
             });
 
             builder.Modules
@@ -66,6 +72,14 @@ public class Startup {
                     options.UseXpoPermissionsCaching();
                     options.Events.OnSecurityStrategyCreated += securityStrategy => {
                         ((SecurityStrategy)securityStrategy).PermissionsReloadMode = PermissionsReloadMode.CacheOnFirstAccess;
+                    };
+                    options.Events.OnCustomizeSecurityCriteriaOperator = context => {
+                        if (context.Operator is FunctionOperator functionOperator) {
+                            if (functionOperator.Operands.Count == 1 &&
+                              "CurrentCompanyOid".Equals((functionOperator.Operands[0] as ConstantValue)?.Value?.ToString(), StringComparison.InvariantCultureIgnoreCase)) {
+                                context.Result = new ConstantValue(((ApplicationUser)context.Security.User)?.Company?.Oid ?? Guid.NewGuid());
+                            }
+                        }
                     };
                 })
                 .AddPasswordAuthentication(options => {

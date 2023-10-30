@@ -11,7 +11,7 @@ using DevExpress.Persistent.Validation;
 
 namespace CustomFunctionCriteriaOperator.Module.BusinessObjects {
    [DefaultClassOptions]
-   [RuleCriteria("", DefaultContexts.Save, "Company.Oid = CurrentCompanyOid()")]
+   [RuleCriteria("", DefaultContexts.Save, "Company.Oid = CurrentCompanyOid()",SkipNullOrEmptyValues =false)]
    public class ValidatedObject : BaseObject {
       public ValidatedObject(Session session)
          : base(session) {}

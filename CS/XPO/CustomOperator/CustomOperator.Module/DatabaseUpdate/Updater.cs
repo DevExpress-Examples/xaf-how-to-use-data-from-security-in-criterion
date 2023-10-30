@@ -10,6 +10,7 @@ using DevExpress.ExpressApp.Xpo;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using CustomOperator.Module.BusinessObjects;
+using CustomFunctionCriteriaOperator.Module.BusinessObjects;
 
 namespace CustomOperator.Module.DatabaseUpdate;
 
@@ -62,6 +63,15 @@ public class Updater : ModuleUpdater {
         }
         adminRole.IsAdministrative = true;
 		userAdmin.Roles.Add(adminRole);
+
+        var testComp = ObjectSpace.CreateObject<Company>();
+        testComp.Name = "PlainCompany";
+        testComp.ApplicationUsers.Add(sampleUser);
+
+        var adminComp = ObjectSpace.CreateObject<Company>();
+        adminComp.Name = "AdminCompany";
+        adminComp.ApplicationUsers.Add(userAdmin);
+
         ObjectSpace.CommitChanges(); //This line persists created object(s).
 #endif
     }
