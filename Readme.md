@@ -3,16 +3,15 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 
-# How to: Use data from a securiy user's property in a criterion
+# XAF - How to use data from a securiy user's property in a criterion
 
-This example shows how to use data from the currently logged ApplicationUser in a criterion (e.g. in a validation rule)
-
+This example shows how to use data from the currently logged-in user in a criterion (e.g. in a validation rule).
 
 ![image](https://github.com/DevExpress-Examples/XAF_how-to-create-a-custom-function-criteria-operator-e3945/assets/14300209/979f25d7-23d3-4f60-a30f-18e61f8e0d7b)
 
 ## Implementation Details
 
-As there is no way to access a security system data from a criterion, you need to patch a criterion using the DevExpress.ExpressApp.Security.SecurityEvents.OnCustomizeSecurityCriteriaOperator event. 
+As there is no way to access security system data from a criterion, you should patch a criterion using the `DevExpress.ExpressApp.Security.SecurityEvents.OnCustomizeSecurityCriteriaOperator` event. 
 
 ```cs{2}
 [DefaultClassOptions]
