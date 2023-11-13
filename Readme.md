@@ -50,3 +50,7 @@ builder.Security
 - [ValidatedObject.cs](CS/EF/CustomOperatorEF/CustomOperatorEF.Module/BusinessObjects/ValidatedObject.cs)
 - [Startup.cs](CS/EF/CustomOperatorEF/CustomOperatorEF.Blazor.Server/Startup.cs)
 
+## See also
+
+- [Custom Function Criteria Operators](https://docs.devexpress.com/eXpressAppFramework/113480/filtering/in-list-view/custom-function-criteria-operators)
+
