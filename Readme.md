@@ -12,36 +12,7 @@ This example shows how to use data from the currently logged-in user in a criter
 
 ## Implementation Details
 
-Since criterion security system data is not accessible, you should patch a criterion using the `DevExpress.ExpressApp.Security.SecurityEvents.OnCustomizeSecurityCriteriaOperator` event. 
-
-```cs{2}
-[DefaultClassOptions]
-[RuleCriteria("", DefaultContexts.Save, "Company.ID = CurrentCompanyOid()", SkipNullOrEmptyValues = false)]
-public class ValidatedObject : BaseObject {
-    public virtual Company Company { get; set; }
-    public virtual string Name { get; set; }
-}
-
-```
-
-```cs{4-12}
-builder.Security
-    .UseIntegratedMode(options => {
-        //...    
-        options.Events.OnCustomizeSecurityCriteriaOperator = context => {
-            if (context.Operator is FunctionOperator functionOperator) {
-                if (functionOperator.Operands.Count == 1 &&
-                    "CurrentCompanyOid".Equals((functionOperator.Operands[0] as ConstantValue)?.Value?.ToString(), StringComparison.InvariantCultureIgnoreCase)) {
-                    context.Result = new ConstantValue(((ApplicationUser)context.Security.User)?.Company?.ID ?? Guid.NewGuid());
-                }
-            }
-        };
-    })
-```
-
-
-## Documentation
-- [Custom Function Criteria Operators](https://docs.devexpress.com/eXpressAppFramework/113480/filtering/in-list-view/custom-function-criteria-operators)
+Refer to the following help topic to learn how to create such a criterion operator: [Custom Function Criteria Operators](https://docs.devexpress.com/eXpressAppFramework/113480/filtering/in-list-view/custom-function-criteria-operators)
 
 
 
@@ -50,6 +21,7 @@ builder.Security
 
 - [ValidatedObject.cs](CS/EF/CustomOperatorEF/CustomOperatorEF.Module/BusinessObjects/ValidatedObject.cs)
 - [Startup.cs](CS/EF/CustomOperatorEF/CustomOperatorEF.Blazor.Server/Startup.cs)
+- [CurrentCompanyOidOperator.cs](CS/EF/CustomOperatorEF/CustomOperatorEF.Module/CurrentCompanyOidOperator.cs)
 
 ## See also
 - [Core - ValueManager API availability and deprecated static helpers in XAF .NET 6+ apps (Blazor, Web API Service, WinForms)](https://supportcenter.devexpress.com/ticket/details/t1121273/core-valuemanager-api-availability-and-deprecated-static-helpers-in-xaf-net-6-apps)
