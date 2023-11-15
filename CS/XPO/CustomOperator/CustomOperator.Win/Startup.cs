@@ -11,6 +11,7 @@ using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using DevExpress.ExpressApp.Design;
 using CustomOperator.Module.BusinessObjects;
 using DevExpress.Data.Filtering;
+using CustomOperatorEF.Module;
 
 namespace CustomOperator.Win;
 
@@ -52,11 +53,9 @@ public class ApplicationBuilder : IDesignTimeApplicationFactory {
                    ((SecurityStrategy)securityStrategy).PermissionsReloadMode = PermissionsReloadMode.NoCache;
                 };
                 options.Events.OnCustomizeSecurityCriteriaOperator = context => {
-                    if (context.Operator is FunctionOperator functionOperator) {
-                        if (functionOperator.Operands.Count == 1 &&
-                          "CurrentCompanyOid".Equals((functionOperator.Operands[0] as ConstantValue)?.Value?.ToString(), StringComparison.InvariantCultureIgnoreCase)) {
-                            context.Result = new ConstantValue(((ApplicationUser)context.Security.User)?.Company?.Oid ?? Guid.NewGuid());
-                        }
+                    if (CurrentCompanyOidOperator.CanEvaluate(context)) {
+                        CurrentCompanyOidOperator.Evaluate(context);
+                        return;
                     }
                 };
             })

@@ -16,6 +16,7 @@ using DevExpress.ExpressApp.ApplicationBuilder;
 using CustomFunctionCriteriaOperator.Module.BusinessObjects;
 using CustomOperatorEF.Module.BusinessObjects;
 using DevExpress.Data.Filtering;
+using CustomOperatorEF.Module;
 
 namespace CustomOperatorEF.WebApi;
 
@@ -77,11 +78,9 @@ public class Startup {
                         ((SecurityStrategy)securityStrategy).PermissionsReloadMode = PermissionsReloadMode.CacheOnFirstAccess;
                     };
                     options.Events.OnCustomizeSecurityCriteriaOperator = context => {
-                        if (context.Operator is FunctionOperator functionOperator) {
-                            if (functionOperator.Operands.Count == 1 &&
-                              "CurrentCompanyOid".Equals((functionOperator.Operands[0] as ConstantValue)?.Value?.ToString(), StringComparison.InvariantCultureIgnoreCase)) {
-                                context.Result = new ConstantValue(((ApplicationUser)context.Security.User)?.Company?.ID ?? Guid.NewGuid());
-                            }
+                        if (CurrentCompanyOidOperator.CanEvaluate(context)) {
+                            CurrentCompanyOidOperator.Evaluate(context);
+                            return;
                         }
                     };
                 })
