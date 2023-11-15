@@ -41,8 +41,9 @@ builder.Security
 
 
 ## Documentation
+- [Custom Function Criteria Operators](https://docs.devexpress.com/eXpressAppFramework/113480/filtering/in-list-view/custom-function-criteria-operators)
 
-- [Core - ValueManager API availability and deprecated static helpers in XAF .NET 6+ apps (Blazor, Web API Service, WinForms)](https://supportcenter.devexpress.com/ticket/details/t1121273/core-valuemanager-api-availability-and-deprecated-static-helpers-in-xaf-net-6-apps)
+
 
 
 ## Files to Review
@@ -51,6 +52,5 @@ builder.Security
 - [Startup.cs](CS/EF/CustomOperatorEF/CustomOperatorEF.Blazor.Server/Startup.cs)
 
 ## See also
-
-- [Custom Function Criteria Operators](https://docs.devexpress.com/eXpressAppFramework/113480/filtering/in-list-view/custom-function-criteria-operators)
+- [Core - ValueManager API availability and deprecated static helpers in XAF .NET 6+ apps (Blazor, Web API Service, WinForms)](https://supportcenter.devexpress.com/ticket/details/t1121273/core-valuemanager-api-availability-and-deprecated-static-helpers-in-xaf-net-6-apps)
 
