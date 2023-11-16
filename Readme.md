@@ -4,7 +4,7 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 
-# XAF - How to use data from a securiy user's property in a criterion
+# XAF - How to use data from a security user's property in a criterion
 
 This example shows how to use data from the currently logged-in user in a criterion, such as a validation rule.
 
