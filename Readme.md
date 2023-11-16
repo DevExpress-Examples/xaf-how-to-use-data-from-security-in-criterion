@@ -11,7 +11,7 @@ This example shows how to use data from the currently logged-in user in a criter
 
 ## Implementation Details
 
-Refer to the following help topic to learn how to create such a criterion operator: [Custom Function Criteria Operators](https://docs.devexpress.com/eXpressAppFramework/113480/filtering/in-list-view/custom-function-criteria-operators)
+Refer to the following help topic to learn how to create such a criterion operator: [Custom Function Criteria Operators](https://docs.devexpress.com/eXpressAppFramework/113480/filtering/in-list-view/custom-function-criteria-operators).
 
 
 
