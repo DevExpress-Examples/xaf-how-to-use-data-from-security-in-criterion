@@ -10,12 +10,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.ExpressApp.Api.Xpo.All" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.ExpressApp.Validation" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="DevExpress.ExpressApp.Api.Xpo.All" Version="25.2.1-alpha-25302" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="25.2.1-alpha-25302" />
+    <PackageReference Include="DevExpress.ExpressApp.Validation" Version="25.2.1-alpha-25302" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.17" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.9.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomOperator.Module\CustomOperator.Module.csproj" />
