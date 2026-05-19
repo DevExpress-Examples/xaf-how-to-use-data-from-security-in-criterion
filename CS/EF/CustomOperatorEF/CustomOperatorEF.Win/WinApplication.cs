@@ -21,7 +21,6 @@ public class CustomOperatorEFWindowsFormsApplication : WinApplication {
 		SplashScreen = new DXSplashScreen(typeof(XafSplashScreen), new DefaultOverlayFormOptions());
         ApplicationName = "CustomOperatorEF";
         CheckCompatibilityType = DevExpress.ExpressApp.CheckCompatibilityType.DatabaseSchema;
-        UseOldTemplates = false;
         DatabaseVersionMismatch += CustomOperatorEFWindowsFormsApplication_DatabaseVersionMismatch;
         CustomizeLanguagesList += CustomOperatorEFWindowsFormsApplication_CustomizeLanguagesList;
     }

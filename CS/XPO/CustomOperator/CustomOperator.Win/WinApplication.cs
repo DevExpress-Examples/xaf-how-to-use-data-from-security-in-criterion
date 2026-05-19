@@ -16,7 +16,6 @@ public class CustomOperatorWindowsFormsApplication : WinApplication {
 		SplashScreen = new DXSplashScreen(typeof(XafSplashScreen), new DefaultOverlayFormOptions());
         ApplicationName = "CustomOperator";
         CheckCompatibilityType = DevExpress.ExpressApp.CheckCompatibilityType.DatabaseSchema;
-        UseOldTemplates = false;
         DatabaseVersionMismatch += CustomOperatorWindowsFormsApplication_DatabaseVersionMismatch;
         CustomizeLanguagesList += CustomOperatorWindowsFormsApplication_CustomizeLanguagesList;
     }
