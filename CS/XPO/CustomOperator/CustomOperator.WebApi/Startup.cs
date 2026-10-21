@@ -104,20 +104,22 @@ public class Startup {
             .AddControllers()
             .AddOData((options, serviceProvider) => {
                 options
-                    .AddRouteComponents("api/odata", new EdmModelBuilder(serviceProvider).GetEdmModel())
+                    .AddRouteComponents("api/odata", new EdmModelBuilder(serviceProvider).GetEdmModel(), Microsoft.OData.ODataVersion.V401, _routeServices => { _routeServices.ConfigureXafWebApiServices(); })
                     .EnableQueryFeatures(100);
             });
 
         services
             .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options => {
-                options.TokenValidationParameters = new TokenValidationParameters() {
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
                     ValidateIssuerSigningKey = true,
                     //ValidIssuer = Configuration["Authentication:Jwt:Issuer"],
                     //ValidAudience = Configuration["Authentication:Jwt:Audience"],
                     ValidateIssuer = false,
                     ValidateAudience = false,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Authentication:Jwt:IssuerSigningKey"]))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Authentication:Jwt:IssuerSigningKey"])),
+                    AuthenticationType = JwtBearerDefaults.AuthenticationScheme
                 };
             });
 
