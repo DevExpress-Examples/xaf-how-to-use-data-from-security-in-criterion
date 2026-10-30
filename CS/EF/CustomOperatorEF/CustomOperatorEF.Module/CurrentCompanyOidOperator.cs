@@ -27,6 +27,10 @@ namespace CustomOperatorEF.Module {
         // XAF replaces this function with a constant in the OnCustomizeSecurityCriteriaOperator handler (see Startup.cs),
         // so in-memory evaluation is not required. Do not use SecuritySystem.Instance here (XAF0035).
         public object Evaluate(params object[] operands) {
+            // Called only when a criterion bypasses the Object Space and goes directly to ExpressionEvaluator: in-memory grid filters
+            // (WinForms Client/DataView modes, Blazor Client mode) or custom CriteriaOperator evaluation code. To support these cases
+            // in WinForms or Blazor (not in the Web API Service), you can use the previous implementation:
+            // return CurrentOrgIdFunctionCore(SecuritySystem.Instance);
             throw new NotSupportedException($"The {FUNCTION_NAME} function is evaluated by the SecurityOptions.Events.OnCustomizeSecurityCriteriaOperator handler.");
         }
         public static void Evaluate(CustomCriteriaOperatorPatcherContext context) {
