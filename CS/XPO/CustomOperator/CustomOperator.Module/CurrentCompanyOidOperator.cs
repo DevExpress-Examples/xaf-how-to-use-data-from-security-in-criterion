@@ -24,8 +24,10 @@ namespace CustomOperatorEF.Module {
             }
         }
         public static void Register() { }
+        // XAF replaces this function with a constant in the OnCustomizeSecurityCriteriaOperator handler (see Startup.cs),
+        // so in-memory evaluation is not required. Do not use SecuritySystem.Instance here (XAF0035).
         public object Evaluate(params object[] operands) {
-            return CurrentOrgIdFunctionCore(SecuritySystem.Instance);
+            throw new NotSupportedException($"The {FUNCTION_NAME} function is evaluated by the SecurityOptions.Events.OnCustomizeSecurityCriteriaOperator handler.");
         }
         public static void Evaluate(CustomCriteriaOperatorPatcherContext context) {
             context.Result = new ConstantValue(CurrentOrgIdFunctionCore(context.Security));
